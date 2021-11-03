@@ -7,11 +7,11 @@ import java.awt.*;
 public class vistaLogin extends JFrame {
     private JPanel mainContainer;
     private JTextField Usuario;
-    private JTextField textField2;
     private JButton aceptar;
     private JButton cancelar;
     private JLabel passwordLabel;
     private JLabel usuarioLabel;
+    private JPasswordField password;
 
 
     public vistaLogin() throws HeadlessException {

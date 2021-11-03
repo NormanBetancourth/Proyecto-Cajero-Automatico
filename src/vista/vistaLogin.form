@@ -38,14 +38,6 @@
         </constraints>
         <properties/>
       </component>
-      <component id="33559" class="javax.swing.JTextField" binding="textField2" default-binding="true">
-        <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties/>
-      </component>
       <component id="7b4dc" class="javax.swing.JButton" binding="aceptar">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -68,6 +60,14 @@
           <foreground color="-16777216"/>
           <text value="Cancelar"/>
         </properties>
+      </component>
+      <component id="3ccdb" class="javax.swing.JPasswordField" binding="password">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
       </component>
     </children>
   </grid>
