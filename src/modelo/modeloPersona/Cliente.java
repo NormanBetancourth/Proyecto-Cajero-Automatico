@@ -2,14 +2,14 @@ package modelo.modeloPersona;
 
 import java.util.Objects;
 
-public class Persona {
+public class Cliente{
     private int cedula;
     private String nombre;
     private String usuario;
     private String clave;
     private int saldo;
 
-    public Persona(int cedula, String nombre, String usuario, String clave, int saldo) {
+    public Cliente(int cedula, String nombre, String usuario, String clave, int saldo) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.usuario = usuario;
@@ -17,7 +17,7 @@ public class Persona {
         this.saldo = saldo;
     }
 
-    public Persona() {
+    public Cliente() {
     }
 
     public int getCedula() {
