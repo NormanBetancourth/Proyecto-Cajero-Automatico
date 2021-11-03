@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="vista.vistaPrincipal">
+  <grid id="27dc6" binding="mainContainer" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties>
+      <autoscrolls value="false"/>
+      <background color="-890018"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="8bd6e" class="javax.swing.JButton" binding="retiro">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <actionCommand value="retiro"/>
+          <background color="-1"/>
+          <text value="Hacer un retiro"/>
+        </properties>
+      </component>
+      <component id="2799b" class="javax.swing.JButton" binding="clave">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <actionCommand value="clave"/>
+          <background color="-1"/>
+          <text value="Cambio de clave"/>
+        </properties>
+      </component>
+      <component id="a31e5" class="javax.swing.JButton" binding="salir">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <actionCommand value="salir"/>
+          <background color="-1"/>
+          <text value="Salir"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
