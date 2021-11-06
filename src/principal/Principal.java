@@ -1,11 +1,10 @@
 package principal;
 
-import vista.vistaLogin;
-import vista.vistaPrincipal;
+import vista.VistaLogin;
 
 public class Principal {
     public static void main(String[] args) {
-        vistaLogin vista = new vistaLogin();
+        VistaLogin vista = new VistaLogin();
         //vistaPrincipal vistaw = new vistaPrincipal();
 
     }

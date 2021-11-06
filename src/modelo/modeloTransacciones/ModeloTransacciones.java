@@ -5,10 +5,10 @@ import modelo.modeloPersona.Cliente;
 public class ModeloTransacciones {
     private int idTransaccion;
     private Cliente cliente;
-    private Double monto;
+    private double monto;
     private String tipoID;
 
-    public ModeloTransacciones(int idTransaccion, Cliente cliente, Double monto, String tipoID) {
+    public ModeloTransacciones(int idTransaccion, Cliente cliente, double monto, String tipoID) {
         this.idTransaccion = idTransaccion;
         this.cliente = cliente;
         this.monto = monto;
@@ -26,7 +26,7 @@ public class ModeloTransacciones {
         return cliente;
     }
 
-    public Double getMonto() {
+    public double getMonto() {
         return monto;
     }
 
@@ -42,7 +42,7 @@ public class ModeloTransacciones {
         this.cliente = cliente;
     }
 
-    public void setMonto(Double monto) {
+    public void setMonto(double monto) {
         this.monto = monto;
     }
 
