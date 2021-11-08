@@ -1,4 +1,4 @@
-package vista;
+package clienteApp.vista;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

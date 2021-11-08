@@ -1,4 +1,4 @@
-package servidorApp;
+package servidorApp.modelo;
 
 import servidorApp.SQLConnection.SQLExecutor;
 

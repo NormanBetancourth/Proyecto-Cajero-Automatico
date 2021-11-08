@@ -1,5 +1,6 @@
-package vista;
+package clienteApp.vista;
 
+import javax.print.attribute.standard.JobImpressions;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -19,6 +20,7 @@ public class VistaLogin extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500,300);
         addComponents();
+        setTitle("Cajero automático");
         getContentPane().add(mainContainer);
         setVisible(true);
     }
@@ -30,6 +32,8 @@ public class VistaLogin extends JFrame {
         usuarioLabel.setBorder(new EmptyBorder(0,15,0,0));
         cancelar.setPreferredSize(new Dimension(40,15));
         aceptar.setPreferredSize(new Dimension(40,15));
+
+        this.setIconImage(new ImageIcon("src/clienteApp/images/login.png").getImage());
     }
 
     public String getPasswordF() {
