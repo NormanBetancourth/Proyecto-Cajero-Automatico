@@ -17,4 +17,15 @@ public class ControladorPrincipal {
         login.iniciar();
     }
 
+    public void menuPrincipal() {
+        menuPrincipal.iniciar();
+    }
+
+    public void Retiro() {
+        retiro.iniciar();
+    }
+
+    public void cambioClave() {
+        clave.iniciar();
+    }
 }

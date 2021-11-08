@@ -17,10 +17,27 @@ public class ControladorMenuPrincipal {
         vista.addListeners(new ActionCommand());
     }
 
+    public void iniciar() {
+        vista = new vistaPrincipal();
+        addListeners();
+    }
+
     private class ActionCommand implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             switch (e.getActionCommand()){
+                case "retiro" ->{
+                    ctrl.Retiro();
+                    vista.setVisible(false);
+                }
+                case "clave" ->{
+                    ctrl.cambioClave();
+                    vista.setVisible(false);
+
+                }
+                case "salir" ->{
+                    vista.salir();
+                }
 
             }
         }

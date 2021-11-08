@@ -14,6 +14,10 @@ public class controladorCambioClave {
         ctrl = controladorPrincipal;
     }
 
+    public void iniciar() {
+        vista = new VistaCambioClave();
+    }
+
     private class ActionCommand implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {

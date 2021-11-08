@@ -32,4 +32,8 @@ public class vistaPrincipal extends JFrame{
         this.setIconImage(new ImageIcon(path).getImage());
         add(mainContainer);
     }
+
+    public void salir() {
+        System.exit(0);
+    }
 }

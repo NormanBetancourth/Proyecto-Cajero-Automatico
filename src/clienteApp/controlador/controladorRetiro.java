@@ -15,9 +15,16 @@ public class controladorRetiro {
         ctrl = controladorPrincipal;
     }
 
+    public void iniciar() {
+        vista = new VentanaRetiroDinero();
+    }
+
     private class ActionCommand implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            switch (e.getActionCommand()){
+
+            }
 
         }
     }

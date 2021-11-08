@@ -53,14 +53,15 @@ public class controladorLogin {
         public void actionPerformed(ActionEvent e) {
             switch (e.getActionCommand()){
                 case "Aceptar" ->{
-                    //todo: conexion con el server
+                    //todo: conexion con el server y validacion
+                    vistaLogin.setVisible(false);
+                    ctrl.menuPrincipal();
 
-                    break;
+
                 }
 
                 case "Cancelar" -> {
                     vistaLogin.salir();
-                    break;
                 }
 
             }

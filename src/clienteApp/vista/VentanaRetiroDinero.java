@@ -29,4 +29,8 @@ public class VentanaRetiroDinero extends JFrame{
         this.setIconImage(new ImageIcon(path).getImage());
 
     }
+
+    public void salir() {
+        System.exit(0);
+    }
 }
