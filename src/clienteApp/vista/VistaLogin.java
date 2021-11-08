@@ -18,7 +18,7 @@ public class VistaLogin extends JFrame {
 
     public VistaLogin() throws HeadlessException {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500,300);
+        setSize(600,400);
         addComponents();
         setTitle("Cajero automático");
         getContentPane().add(mainContainer);
@@ -26,13 +26,8 @@ public class VistaLogin extends JFrame {
     }
 
     private void addComponents() {
-
-        mainContainer.setBorder(new EmptyBorder(40,30,40,30));
-        passwordLabel.setBorder(new EmptyBorder(0,15,0,0));
-        usuarioLabel.setBorder(new EmptyBorder(0,15,0,0));
         cancelar.setPreferredSize(new Dimension(40,15));
         aceptar.setPreferredSize(new Dimension(40,15));
-
         this.setIconImage(new ImageIcon("src/clienteApp/images/login.png").getImage());
     }
 

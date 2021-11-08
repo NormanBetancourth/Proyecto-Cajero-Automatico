@@ -3,24 +3,24 @@ package clienteApp.vista;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class vistaPrincipal extends JFrame{
-    private JPanel mainContainer;
-    private JButton retiro;
-    private JButton clave;
-    private JButton salir;
+public class VistaCambioClave extends JFrame{
+    private JPanel mainPanel;
+    private JPasswordField textField1;
+    private JButton limpiarButton;
+    private JButton aceptarButton;
+    private JButton regresarButton;
 
-
-    public vistaPrincipal() {
+    public VistaCambioClave() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500,350);
+        setSize(700,500);
         addComponents();
         setVisible(true);
     }
 
     private void addComponents() {
-        mainContainer.setBorder(new EmptyBorder(40,100,40,100));
+        mainPanel.setBorder(new EmptyBorder(40,60,40,60));
         String path = "src/clienteApp/images/menu.png";
         this.setIconImage(new ImageIcon(path).getImage());
-        add(mainContainer);
+        add(mainPanel);
     }
 }

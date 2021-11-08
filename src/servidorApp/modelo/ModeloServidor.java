@@ -7,6 +7,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -267,6 +268,7 @@ public class ModeloServidor extends Thread {
             enviarMensajeDeError("Saldo insuficiente para realizar el retiro");
         }
     }
+
 
     public void salir(){
         System.exit(0);
