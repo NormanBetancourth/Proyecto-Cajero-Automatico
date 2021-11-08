@@ -18,7 +18,15 @@ public class controladorLogin {
     }
 
     public String getPassword() {
+        updatePwd();
         return password;
+    }
+
+    private void updatePwd() {
+        password = vistaLogin.getPassword();
+    }
+    private void updateUser() {
+        user = vistaLogin.getUsuario();
     }
 
     public void setUser(String user) {
@@ -37,12 +45,23 @@ public class controladorLogin {
 
     public void iniciar() {
         vistaLogin = new VistaLogin();
+        vistaLogin.addListener( new ActionCommand());
     }
 
     private class ActionCommand implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             switch (e.getActionCommand()){
+                case "Aceptar" ->{
+                    //todo: conexion con el server
+
+                    break;
+                }
+
+                case "Cancelar" -> {
+                    vistaLogin.salir();
+                    break;
+                }
 
             }
 
