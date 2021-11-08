@@ -16,11 +16,24 @@ public class controladorCambioClave {
 
     public void iniciar() {
         vista = new VistaCambioClave();
+        vista.addListener(new ActionCommand());
     }
 
     private class ActionCommand implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            switch (e.getActionCommand()){
+                case "Limpiar" ->{
+                    vista.limpiar();
+                }
+                case "Aceptar" ->{
+                    //todo: validar conexiones,  concirdancia y formado de contraseña
+                }
+                case "Regresar" ->{
+                    vista.setVisible(false);
+                    ctrl.menuPrincipal();
+                }
+            }
 
         }
     }

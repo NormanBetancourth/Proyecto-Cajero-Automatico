@@ -1,7 +1,10 @@
 package clienteApp.vista;
 
+import clienteApp.controlador.controladorRetiro;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class VentanaRetiroDinero extends JFrame{
     private JPanel mainContainer;
@@ -33,4 +36,29 @@ public class VentanaRetiroDinero extends JFrame{
     public void salir() {
         System.exit(0);
     }
+
+    public float getSaldo() {
+        return Float.parseFloat(saldo.getText());
+    }
+
+    public float getRetiro() {
+        return Float.parseFloat(monto.getText());
+    }
+
+    public void setResultado(float resultado) {
+        restante.setText(String.valueOf(resultado));
+    }
+    public void limpiar(){
+        saldo.setText("");
+        restante.setText("");
+        monto.setText("");
+    }
+
+    public void addListener(ActionListener al) {
+        limpiarButton.addActionListener(al);
+        aceptarButton.addActionListener(al);
+        regresarButton.addActionListener(al);
+    }
+
+
 }
