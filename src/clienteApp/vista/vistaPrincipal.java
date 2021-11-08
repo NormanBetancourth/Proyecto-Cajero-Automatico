@@ -1,7 +1,10 @@
 package clienteApp.vista;
 
+import clienteApp.controlador.ControladorMenuPrincipal;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionListener;
 
 public class vistaPrincipal extends JFrame{
     private JPanel mainContainer;
@@ -15,6 +18,12 @@ public class vistaPrincipal extends JFrame{
         setSize(500,350);
         addComponents();
         setVisible(true);
+    }
+
+    public  void addListeners(ActionListener al) {
+        retiro.addActionListener(al);
+        clave.addActionListener(al);
+        salir.addActionListener(al);
     }
 
     private void addComponents() {

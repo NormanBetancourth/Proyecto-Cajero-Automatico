@@ -5,10 +5,12 @@ import javax.swing.border.EmptyBorder;
 
 public class VistaCambioClave extends JFrame{
     private JPanel mainPanel;
-    private JPasswordField textField1;
+    private JPasswordField claveActual;
     private JButton limpiarButton;
     private JButton aceptarButton;
     private JButton regresarButton;
+    private JPasswordField ClaveNueva;
+    private JPasswordField confirmacionClaveNueva;
 
     public VistaCambioClave() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

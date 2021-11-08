@@ -25,6 +25,14 @@ public class VistaLogin extends JFrame {
         setVisible(true);
     }
 
+    public  String getUsuario(){
+        return Usuario.getText();
+    }
+
+    public String getPassword(){
+        return String.valueOf(password.getPassword());
+    }
+
     private void addComponents() {
         cancelar.setPreferredSize(new Dimension(40,15));
         aceptar.setPreferredSize(new Dimension(40,15));

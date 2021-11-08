@@ -20,7 +20,7 @@
           <text value="Clave actual"/>
         </properties>
       </component>
-      <component id="7ede7" class="javax.swing.JPasswordField" binding="textField1" default-binding="true">
+      <component id="7ede7" class="javax.swing.JPasswordField" binding="claveActual">
         <constraints>
           <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="200" height="35"/>
@@ -41,7 +41,7 @@
           <text value="Clave nueva"/>
         </properties>
       </component>
-      <component id="e217" class="javax.swing.JPasswordField" default-binding="true">
+      <component id="e217" class="javax.swing.JPasswordField" binding="ClaveNueva">
         <constraints>
           <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="200" height="35"/>
@@ -62,7 +62,7 @@
           <text value="Confirmar clave"/>
         </properties>
       </component>
-      <component id="6cf9f" class="javax.swing.JPasswordField" default-binding="true">
+      <component id="6cf9f" class="javax.swing.JPasswordField" binding="confirmacionClaveNueva">
         <constraints>
           <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="200" height="35"/>
