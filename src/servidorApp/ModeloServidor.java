@@ -160,7 +160,7 @@ public class ModeloServidor extends Thread {
             enviarMensaje("Conexión exitosa. ¡Bienvenido " + cadena + "!");
             //System.out.println(cadena); // Para probar
         } catch (SQLException throwables) {
-            enviarMensajeDeError(throwables.getMessage());
+            enviarMensajeDeError("Nombre de usuario o contraseña incorrecto");
         }
     }
 
