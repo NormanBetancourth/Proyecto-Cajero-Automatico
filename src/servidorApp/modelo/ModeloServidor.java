@@ -57,8 +57,7 @@ public class ModeloServidor extends Thread {
                         String identificacion = recibirMensaje();
                         String passwordActual = recibirMensaje();
                         String passwordNueva = recibirMensaje();
-                        if (isValidPassword(passwordNueva) && !passwordActual.equals(passwordNueva))
-                            realizarCambioDeClave(identificacion, passwordActual, passwordNueva);
+                        realizarCambioDeClave(identificacion, passwordActual, passwordNueva);
                     }
                     case "consultaDeSaldo" -> {
                         String identificacion = recibirMensaje();
@@ -116,39 +115,7 @@ public class ModeloServidor extends Thread {
         return isValid;
     }
 
-    public static boolean isValidPassword(String password) throws Exception {
-        boolean isValid = true;
-        if (password.length() > 15 || password.length() < 8)
-        {
-            isValid = false;
-            throw new Exception("La contraseña debe tener menos de 20 y más de 8 caracteres.");
-        }
-        String upperCaseChars = "(.*[A-Z].*)";
-        if (!password.matches(upperCaseChars ))
-        {
-            isValid = false;
-            throw new Exception("La contraseña debe tener al menos un carácter en mayúscula");
-        }
-        String lowerCaseChars = "(.*[a-z].*)";
-        if (!password.matches(lowerCaseChars ))
-        {
-            isValid = false;
-            throw new Exception("La contraseña debe tener al menos un carácter en minúscula");
-        }
-        String numbers = "(.*[0-9].*)";
-        if (!password.matches(numbers ))
-        {
-            isValid = false;
-            throw new Exception("La contraseña debe tener al menos un número");
-        }
-        String specialChars = "(.*[@,#,$,%].*$)";
-        if (!password.matches(specialChars ))
-        {
-            isValid = false;
-            throw new Exception("La contraseña debe tener al menos un carácter especial ");
-        }
-        return isValid;
-    }
+
 
     public void abrirPuerto() {
         try {
