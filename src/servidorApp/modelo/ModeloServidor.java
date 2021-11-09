@@ -5,6 +5,7 @@ import servidorApp.SQLConnection.SQLExecutor;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.security.SecureRandom;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Random;
@@ -261,6 +262,14 @@ public class ModeloServidor extends Thread {
         return false;
     }
 
+    public String crearCodigo(String id){
+        SecureRandom random = new SecureRandom();
+        char caracter1 = (char) (random.nextInt(26) + 'A');
+        char caracter2 = (char) (random.nextInt(26) + 'A');
+        char caracter3 = (char) (random.nextInt(26) + 'A');
+        return id + "-" + caracter1 + caracter2 + caracter3;
+    }
+
     public void realizarRetiro(String id, String monto) {
         double saldoActualizado = 0.0;
         double saldo = 0.0;
@@ -272,7 +281,7 @@ public class ModeloServidor extends Thread {
                 //Ingresar la transaccion
                 String valores1[] = new String[5];
                 valores1[0] = "INSERT INTO TRANSACCIONES(ID_TRANSACCION, ID_CLIENTE, MONTO_TRANSAC, TIPO_ID) VALUES (?,?,?,?)";
-                valores1[1] = String.valueOf(new Random().nextInt(100));
+                valores1[1] = crearCodigo(id);
                 valores1[2] = id;
                 valores1[3] = monto;
                 valores1[4] = String.valueOf(2); // Suponiendo '2' como retiros

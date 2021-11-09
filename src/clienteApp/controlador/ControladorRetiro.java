@@ -13,6 +13,7 @@ public class ControladorRetiro implements IControlador{
     private ControladorPrincipal ctrl;
     private final String RETIRO = "retiroDeDinero";
     private final String CONSULTA = "consultaDeSaldo";
+    private String nuevoSaldo;
 
     public ControladorRetiro(ControladorPrincipal controladorPrincipal, ModeloCliente modeloCliente) {
         vista = new VentanaRetiroDinero();
@@ -38,10 +39,12 @@ public class ControladorRetiro implements IControlador{
         @Override
         public void actionPerformed(ActionEvent e) {
             String mensaje;
+            String nuevoMonto;
 
             switch (e.getActionCommand()){
                 case "Limpiar" -> {
                     vista.clearTF();
+                    vista.setSaldo(nuevoSaldo);
                 }
                 case "Aceptar" -> {
                     try{
@@ -52,7 +55,9 @@ public class ControladorRetiro implements IControlador{
                             modelo.enviarMensaje(RETIRO);
                             modelo.enviarMensaje(ctrl.getIdentificacionCliente());
                             modelo.enviarMensaje(vista.getMonto());
-                            vista.setRestante(modelo.recibirMensaje());
+                            nuevoMonto = modelo.recibirMensaje();
+                            nuevoSaldo = nuevoMonto;
+                            vista.setRestante(nuevoMonto);
 
                             mensaje = modelo.recibirMensaje();
                             if(mensaje.startsWith("Error")){
