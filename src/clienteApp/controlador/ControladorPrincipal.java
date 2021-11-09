@@ -35,4 +35,8 @@ public class ControladorPrincipal {
     public void controladorRetiro(){
         retiro = new ControladorRetiro(this, modeloCliente);
     }
+
+    public void controladorLogin(){
+        login = new ControladorLogin(this, modeloCliente);
+    }
 }

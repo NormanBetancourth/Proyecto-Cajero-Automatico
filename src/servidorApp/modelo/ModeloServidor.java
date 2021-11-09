@@ -68,7 +68,6 @@ public class ModeloServidor extends Thread {
                         String monto = recibirMensaje();
                         realizarRetiro(identificacion, monto);
                     }
-
                     case "salir" -> {
                         salir();
                     }
@@ -312,7 +311,8 @@ public class ModeloServidor extends Thread {
 
 
     public void salir(){
-        Thread.currentThread().interrupt();
+        this.interrupt();
+        //Thread.currentThread().interrupt();
         System.exit(0);
     }
 

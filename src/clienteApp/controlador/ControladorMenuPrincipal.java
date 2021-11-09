@@ -41,9 +41,9 @@ public class ControladorMenuPrincipal implements IControlador{
                     ctrl.controladorCambioClave();
                 }
                 case "salir" ->{
-                    vista.dispose();
                     //modelo.enviarMensaje(ctrl.SALIR);
-                    new ControladorPrincipal();
+                    //vista.salir();
+                    ctrl.controladorLogin();
                 }
 
             }
