@@ -7,7 +7,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Objects;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,8 +40,8 @@ public class ModeloServidor extends Thread {
         esperarAlCliente();
         crearFlujos();
         start();
-
     }
+
 
     public void run() {
         try {
@@ -69,14 +68,14 @@ public class ModeloServidor extends Thread {
                         String monto = recibirMensaje();
                         realizarRetiro(identificacion, monto);
                     }
-                    case "Salir" -> {
+                    case "salir" -> {
                         salir();
                     }
                 }
             }
-        }
-        catch (Exception exception){
-            enviarMensajeDeError(exception.getMessage());
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            //enviarMensajeDeError("Hubo un fallo en el proceso");
         }
     }
 
@@ -89,11 +88,13 @@ public class ModeloServidor extends Thread {
     }
 
     public void esperarAlCliente() {
-        try {
-            socket = serverSocket.accept();
-        } catch (IOException ex) {
-            Logger.getLogger(ModeloServidor.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+                try {
+                    socket = serverSocket.accept();
+                } catch (IOException ex) {
+                    Logger.getLogger(ModeloServidor.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
     }
 
     public void crearFlujos() {
@@ -151,15 +152,15 @@ public class ModeloServidor extends Thread {
         try {
             executor = new SQLExecutor(usernameBD, passwordBD);
             resultSet = executor.ejecutaQuery("SELECT * FROM CLIENTE");
-            while(resultSet.next()){
-                if(resultSet.getString("USUARIO").equals(usernameCliente) &&
-                        resultSet.getString("CLAVE").equals(passwordCliente)){
+            while (resultSet.next()) {
+                if (resultSet.getString("USUARIO").equals(usernameCliente) &&
+                        resultSet.getString("CLAVE").equals(passwordCliente)) {
                     break;
                 }
             }
             cadena = resultSet.getString("NOMBRE");
             enviarMensaje("Conexión exitosa. ¡Bienvenido " + cadena + "!");
-            //System.out.println(cadena); // Para probar
+            enviarMensaje(resultSet.getString("CEDULA"));
         } catch (SQLException throwables) {
             enviarMensajeDeError("Nombre de usuario o contraseña incorrecto");
         }
@@ -175,12 +176,12 @@ public class ModeloServidor extends Thread {
             valores[2] = identificacion;
             valores[3] = passwordActual;
 
-
             executor.prepareStatement(valores);
             enviarMensaje("Proceso completado exitosamente");
             //System.out.println("Cambio de clave completado"); // Para probar
         } catch (Exception throwables) {
-            enviarMensajeDeError(throwables.getMessage());
+            throwables.printStackTrace();
+            enviarMensajeDeError("Hubo un fallo en el proceso");
         }
     }
 
@@ -194,9 +195,10 @@ public class ModeloServidor extends Thread {
                     break;
                 }
             }
-            enviarMensaje("Saldo: " + resultSet.getString("SALDO"));
+            enviarMensaje(resultSet.getString("SALDO"));
         } catch (SQLException exception) {
-            enviarMensajeDeError(exception.getMessage());
+            exception.printStackTrace();
+            enviarMensajeDeError("Hubo un fallo en el proceso");
         }
     }
 
@@ -217,6 +219,7 @@ public class ModeloServidor extends Thread {
 
         } catch (SQLException exception) {
             exception.printStackTrace();
+            enviarMensaje("Hubo un fallo en el proceso");
         }
         return false;
     }
@@ -256,11 +259,11 @@ public class ModeloServidor extends Thread {
                 valores2[2] = id;
 
                 executor.prepareStatement(valores2);
-
+                enviarMensaje(String.valueOf(saldoActualizado));
                 enviarMensaje("Proceso completado exitosamente");
 
             } catch (Exception ex) {
-                enviarMensajeDeError("Fallo en el proceso");
+                enviarMensajeDeError("Hubo un fallo en el proceso");
                 Logger.getLogger(ModeloServidor.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -271,6 +274,7 @@ public class ModeloServidor extends Thread {
 
 
     public void salir(){
+        Thread.currentThread().interrupt();
         System.exit(0);
     }
 

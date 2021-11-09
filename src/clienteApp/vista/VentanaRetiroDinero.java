@@ -1,7 +1,5 @@
 package clienteApp.vista;
 
-import clienteApp.controlador.controladorRetiro;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -16,11 +14,12 @@ public class VentanaRetiroDinero extends JFrame{
     private JTextField restante;
 
     public VentanaRetiroDinero() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setSize(600,400);
         addComponents();
         setTitle("Cajero automático");
         getContentPane().add(mainContainer);
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 
@@ -33,25 +32,34 @@ public class VentanaRetiroDinero extends JFrame{
 
     }
 
-    public void salir() {
-        System.exit(0);
+    public String getSaldo() {
+        return saldo.getText();
     }
 
-    public float getSaldo() {
-        return Float.parseFloat(saldo.getText());
+    public void setSaldo(String saldo) {
+        this.saldo.setText(saldo);
     }
 
-    public float getRetiro() {
-        return Float.parseFloat(monto.getText());
+    public String getMonto() {
+        return monto.getText();
     }
 
-    public void setResultado(float resultado) {
-        restante.setText(String.valueOf(resultado));
+    public void setMonto(String monto) {
+        this.monto.setText(monto);
     }
-    public void limpiar(){
-        saldo.setText("");
-        restante.setText("");
-        monto.setText("");
+
+    public String getRestante() {
+        return restante.getText();
+    }
+
+    public void setRestante(String restante) {
+        this.restante.setText(restante);
+    }
+
+    public void clearTF(){
+        //saldo.setText(null);
+        restante.setText(null);
+        monto.setText(null);
     }
 
     public void addListener(ActionListener al) {
@@ -60,5 +68,11 @@ public class VentanaRetiroDinero extends JFrame{
         regresarButton.addActionListener(al);
     }
 
+    public void showMessage(String message){
+        JOptionPane.showMessageDialog(this, message,"Pantalla de Retiro de Dinero", JOptionPane.INFORMATION_MESSAGE);
+    }
 
+    public void showErrorMessage(String message){
+        JOptionPane.showMessageDialog(this, message,"Pantalla de Retiro de Dinero", JOptionPane.ERROR_MESSAGE);
+    }
 }

@@ -45,4 +45,33 @@ public class SQLExecutor {
         }
         return resultSet;
     }
+
+    public void cierra(){
+        if(resultSet != null){
+            try{
+                resultSet.close();
+            }
+            catch (SQLException ex){
+                ex.printStackTrace();
+            }
+        }
+
+        if(statement != null){
+            try{
+                statement.close();
+            }
+            catch (SQLException ex){
+                ex.printStackTrace();
+            }
+        }
+
+        if(dbConector != null){
+            try{
+                dbConector.cierra();
+            }
+            catch (Exception ex){
+                ex.printStackTrace();
+            }
+        }
+    }
 }

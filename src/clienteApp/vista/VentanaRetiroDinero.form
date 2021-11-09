@@ -73,6 +73,7 @@
         </constraints>
         <properties>
           <background color="-13029299"/>
+          <editable value="false"/>
           <font size="18"/>
           <foreground color="-1"/>
         </properties>

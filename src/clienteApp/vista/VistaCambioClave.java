@@ -42,19 +42,20 @@ public class VistaCambioClave extends JFrame{
     }
 
     public String getTxtValidarNuevaClave() {
-        actualizarValidarNuevaclase();
+        actualizarValidarNuevaclave();
         return txtValidarNuevaClave;
     }
 
-    private void actualizarValidarNuevaclase() {
+    private void actualizarValidarNuevaclave() {
         //todo: validar la contraseña
         txtValidarNuevaClave = String.valueOf(confirmacionClaveNueva.getPassword());
     }
 
     public VistaCambioClave() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setSize(700,500);
         addComponents();
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 
@@ -65,9 +66,16 @@ public class VistaCambioClave extends JFrame{
         add(mainPanel);
     }
 
-    public void limpiar() {
+    public void clearTF() {
         claveActual.setText("");
         ClaveNueva.setText("");
         confirmacionClaveNueva.setText("");
+    }
+
+    public void showMessage(String message){
+        JOptionPane.showMessageDialog(this, message,"Pantalla de Login", JOptionPane.INFORMATION_MESSAGE);
+    }
+    public void showErrorMessage(String message){
+        JOptionPane.showMessageDialog(this, message,"Pantalla de Login", JOptionPane.ERROR_MESSAGE);
     }
 }

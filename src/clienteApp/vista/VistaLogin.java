@@ -16,20 +16,25 @@ public class VistaLogin extends JFrame {
     private JPasswordField password;
 
     public VistaLogin() throws HeadlessException {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setSize(600,400);
         addComponents();
         setTitle("Cajero automático");
         getContentPane().add(mainContainer);
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 
-    public  String getUsuario(){
+    public String getUsuario(){
         return Usuario.getText();
     }
 
     public String getPassword(){
         return String.valueOf(password.getPassword());
+    }
+
+    public void setUsuarioText(String texto){
+        Usuario.setText(texto);
     }
 
     private void addComponents() {
@@ -41,11 +46,19 @@ public class VistaLogin extends JFrame {
     public String getPasswordF() {
         return String.valueOf(password.getPassword());
     }
+
     public void addListener(ActionListener actionListener){
         aceptar.addActionListener(actionListener);
         cancelar.addActionListener(actionListener);
     }
+
+    public void clearTF(){
+        Usuario.setText("");
+        password.setText("");
+    }
+
     public void showMessage(String message){
+        //System.out.println(message);
         JOptionPane.showMessageDialog(this, message,"Pantalla de Login", JOptionPane.INFORMATION_MESSAGE);
     }
     public void showErrorMessage(String message){
