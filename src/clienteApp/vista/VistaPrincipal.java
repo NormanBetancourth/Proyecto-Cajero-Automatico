@@ -6,17 +6,18 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
 
-public class vistaPrincipal extends JFrame{
+public class VistaPrincipal extends JFrame{
     private JPanel mainContainer;
     private JButton retiro;
     private JButton clave;
     private JButton salir;
 
 
-    public vistaPrincipal() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public VistaPrincipal() {
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setSize(500,350);
         addComponents();
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 
@@ -31,5 +32,13 @@ public class vistaPrincipal extends JFrame{
         String path = "src/clienteApp/images/menu.png";
         this.setIconImage(new ImageIcon(path).getImage());
         add(mainContainer);
+    }
+
+    public void salir() {
+        System.exit(0);
+    }
+
+    public void showMessage(String message){
+        JOptionPane.showMessageDialog(this, message,"Ventana Principal de Navegación", JOptionPane.INFORMATION_MESSAGE);
     }
 }

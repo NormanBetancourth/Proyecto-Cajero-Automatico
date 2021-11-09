@@ -35,4 +35,15 @@ public class SQLConnector {
         }
         return instance;
     }
+
+    public void cierra(){
+        if(dbConn != null) {
+            try {
+                dbConn.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
 }
