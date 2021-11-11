@@ -42,7 +42,7 @@ public class ControladorMenuPrincipal implements IControlador{
                 }
                 case "salir" ->{
                     //modelo.enviarMensaje(ctrl.SALIR);
-                    //vista.salir();
+                    vista.dispose();
                     ctrl.controladorLogin();
                 }
 
