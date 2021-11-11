@@ -27,8 +27,16 @@ public class ModeloCliente extends Thread {
             @Override
             protected Object doInBackground() throws Exception {
                 while (true) {
-                    String mensaje = recibirMensaje();
-                    controlador.agregarMensaje(mensaje);
+                    System.out.println("while cliente " + Thread.currentThread().getName());
+
+                    SwingUtilities.invokeLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            String mensaje = recibirMensaje();
+                            controlador.agregarMensaje(mensaje);
+                        }
+                    });
+
                 }
             }
         };
@@ -76,6 +84,7 @@ public class ModeloCliente extends Thread {
     }
 
     public void enviarMensaje(String mensaje){
+        //O
         try{
             bufferedWriter.write(mensaje);
             //Preparar el buffer para que quede limpio en el caso de ingresar

@@ -9,6 +9,7 @@ public class Principal {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
+                System.out.println("cliente main " + Thread.currentThread().getName());
                 new ControladorPrincipal();
             }
         });

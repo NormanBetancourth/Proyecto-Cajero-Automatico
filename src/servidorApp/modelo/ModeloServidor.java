@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 public class ModeloServidor{
     final int PUERTO = 7020;
     private ServerSocket serverSocket; // se va a ejecutar siempre
+    private static int conexiones = 0;
 
     public ModeloServidor() {
         try{
@@ -20,6 +21,10 @@ public class ModeloServidor{
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static void setConexiones(int con) {
+        conexiones = con;
     }
 
     public void abrirPuerto() {
@@ -35,8 +40,11 @@ public class ModeloServidor{
         try {
             while (!serverSocket.isClosed()){
                 socket = serverSocket.accept();
-                ConectionHandler conectionHandler = new ConectionHandler(socket);
-                conectionHandler.start();
+                ConectionHandler conectionHandler = new ConectionHandler(socket, ++conexiones);
+                //conectionHandler.start();
+
+                Thread thread = new Thread(conectionHandler);
+                thread.start();
             }
         } catch (IOException ex) {
             Logger.getLogger(ModeloServidor.class.getName()).log(Level.SEVERE, null, ex);

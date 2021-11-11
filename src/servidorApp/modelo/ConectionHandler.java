@@ -2,6 +2,7 @@ package servidorApp.modelo;
 
 import servidorApp.SQLConnection.SQLExecutor;
 
+import javax.swing.*;
 import java.io.*;
 import java.net.Socket;
 import java.security.SecureRandom;
@@ -32,9 +33,11 @@ public class ConectionHandler extends  Thread{
     private final String usernameBD = "sa";
     private final String passwordBD = "password";
     private SQLExecutor executor;
+    private int conexiones = 0;
 
 
-    public ConectionHandler(Socket socket) {
+    public ConectionHandler(Socket socket, int conexiones) {
+        this.conexiones = conexiones;
         this.socket = socket;
         crearFlujos();
     }
@@ -58,9 +61,10 @@ public class ConectionHandler extends  Thread{
 
     public String recibirMensaje() {
         try {
-            return bufferedReader.readLine();
+                return bufferedReader.readLine();
         } catch (IOException ex) {
-            Logger.getLogger(ModeloServidor.class.getName()).log(Level.SEVERE, null, ex);
+            salir();
+            //Logger.getLogger(ModeloServidor.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "";
     }
@@ -239,16 +243,30 @@ public class ConectionHandler extends  Thread{
 
 
     public void salir(){
-        this.interrupt();
-        //Thread.currentThread().interrupt();
-        System.exit(0);
+
+        try {
+            //this.interrupt();
+
+            if(bufferedWriter != null)
+                bufferedWriter.close();
+
+            if(bufferedReader != null)
+                bufferedReader.close();
+
+            if(socket != null){
+                socket.close();
+            }
+
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
     }
 
 
     @Override
     public void run() {
         try {
-            while (true) {
+            while (socket.isConnected()) {
                 String mensaje = recibirMensaje();
                 switch (mensaje) {
                     case "login" -> {
@@ -282,40 +300,4 @@ public class ConectionHandler extends  Thread{
             //enviarMensajeDeError("Hubo un fallo en el proceso");
         }
     }
-
-
-    public static boolean isValidPassword(String password) throws Exception {
-        boolean isValid = true;
-        if (password.length() > 15 || password.length() < 8)
-        {
-            isValid = false;
-            throw new Exception("La contraseña debe tener menos de 20 y más de 8 caracteres.");
-        }
-        String upperCaseChars = "(.*[A-Z].*)";
-        if (!password.matches(upperCaseChars ))
-        {
-            isValid = false;
-            throw new Exception("La contraseña debe tener al menos un carácter en mayúscula");
-        }
-        String lowerCaseChars = "(.*[a-z].*)";
-        if (!password.matches(lowerCaseChars ))
-        {
-            isValid = false;
-            throw new Exception("La contraseña debe tener al menos un carácter en minúscula");
-        }
-        String numbers = "(.*[0-9].*)";
-        if (!password.matches(numbers ))
-        {
-            isValid = false;
-            throw new Exception("La contraseña debe tener al menos un número");
-        }
-        String specialChars = "(.*[@,#,$,%].*$)";
-        if (!password.matches(specialChars ))
-        {
-            isValid = false;
-            throw new Exception("La contraseña debe tener al menos un carácter especial ");
-        }
-        return isValid;
-    }
-
 }
