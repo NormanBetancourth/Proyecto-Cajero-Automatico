@@ -4,6 +4,11 @@ import servidorApp.modelo.ModeloServidor;
 
 public class Principal {
     public static void main(String[] args) throws InterruptedException {
-        ModeloServidor modelo = new ModeloServidor();
+        try {
+            ModeloServidor modelo = new ModeloServidor();
+            modelo.esperarAlCliente();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

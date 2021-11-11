@@ -12,17 +12,11 @@ import java.util.logging.Logger;
 
 public class ModeloServidor{
     final int PUERTO = 7020;
-
     private ServerSocket serverSocket; // se va a ejecutar siempre
-
-
 
     public ModeloServidor() {
         try{
             abrirPuerto();
-            Socket socket = esperarAlCliente();
-            ConectionHandler conectionHandler = new ConectionHandler(socket);
-            conectionHandler.start();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -36,15 +30,17 @@ public class ModeloServidor{
         }
     }
 
-    public Socket esperarAlCliente() {
+    public void esperarAlCliente() {
         Socket socket = null;
         try {
-            socket = serverSocket.accept();
-            return socket;
+            while (!serverSocket.isClosed()){
+                socket = serverSocket.accept();
+                ConectionHandler conectionHandler = new ConectionHandler(socket);
+                conectionHandler.start();
+            }
         } catch (IOException ex) {
             Logger.getLogger(ModeloServidor.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return socket;
     }
 
 }
