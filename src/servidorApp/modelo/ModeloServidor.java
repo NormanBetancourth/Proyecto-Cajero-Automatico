@@ -37,10 +37,14 @@ public class ModeloServidor extends Thread {
     private final String passwordBD = "password";
 
     public ModeloServidor() {
-        abrirPuerto();
-        esperarAlCliente();
-        crearFlujos();
-        start();
+        try{
+            abrirPuerto();
+            esperarAlCliente();
+            crearFlujos();
+            start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -274,17 +278,31 @@ public class ModeloServidor extends Thread {
         double saldoActualizado = 0.0;
         double saldo = 0.0;
         ResultSet resultSet;
+        ResultSet resultSetTransaccion;
+        String idTipoTransaccion;
+
         if (verificaSaldoSuficiente(id, monto)) {
             try {
                 //id cliente, monto y id transaccion
                 executor = new SQLExecutor(usernameBD, passwordBD);
+
+                //Obtener id de la transacción
+                resultSetTransaccion = executor.ejecutaQuery("SELECT * FROM TIPO_TRANSACCIONES");
+
+                while(resultSetTransaccion.next()){
+                    if(resultSetTransaccion.getString("TIPO_TRANSACCION").equals("RETIRO")){
+                        break;
+                    }
+                }
+                idTipoTransaccion = resultSetTransaccion.getString("ID");
+
                 //Ingresar la transaccion
                 String valores1[] = new String[5];
                 valores1[0] = "INSERT INTO TRANSACCIONES(ID_TRANSACCION, ID_CLIENTE, MONTO_TRANSAC, TIPO_ID) VALUES (?,?,?,?)";
                 valores1[1] = crearCodigo(id);
                 valores1[2] = id;
                 valores1[3] = monto;
-                valores1[4] = String.valueOf(2); // Suponiendo '2' como retiros
+                valores1[4] = idTipoTransaccion;
                 executor.prepareStatement(valores1);
 
                 //Actualizar saldo
