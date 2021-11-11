@@ -37,10 +37,14 @@ public class ModeloServidor extends Thread {
     private final String passwordBD = "password";
 
     public ModeloServidor() {
-        abrirPuerto();
-        esperarAlCliente();
-        crearFlujos();
-        start();
+        try{
+            abrirPuerto();
+            esperarAlCliente();
+            crearFlujos();
+            start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
