@@ -33,11 +33,9 @@ public class ConectionHandler extends  Thread{
     private final String usernameBD = "sa";
     private final String passwordBD = "password";
     private SQLExecutor executor;
-    private int conexiones = 0;
 
 
-    public ConectionHandler(Socket socket, int conexiones) {
-        this.conexiones = conexiones;
+    public ConectionHandler(Socket socket) {
         this.socket = socket;
         crearFlujos();
     }

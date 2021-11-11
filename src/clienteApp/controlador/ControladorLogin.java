@@ -49,10 +49,11 @@ public class ControladorLogin implements IControlador {
         this.password = password;
     }
 
-    private void procesoSalir() {
+    private boolean procesoSalir() {
         if(vistaLogin.yesNoMessage("¿Desea salir?") == JOptionPane.YES_OPTION){
-            vistaLogin.salir();
+            return true;
         }
+        return false;
     }
 
     @Override
@@ -96,8 +97,10 @@ public class ControladorLogin implements IControlador {
                     }
                 }
                 case "Cancelar" -> {
-                    modelo.enviarMensaje(ctrl.SALIR);
-                    procesoSalir();
+                    if(procesoSalir()){
+                        modelo.enviarMensaje(ctrl.SALIR);
+                        vistaLogin.salir();
+                    }
                 }
             }
         }
