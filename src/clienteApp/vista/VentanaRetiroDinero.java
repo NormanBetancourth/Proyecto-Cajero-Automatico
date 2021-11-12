@@ -58,7 +58,6 @@ public class VentanaRetiroDinero extends JFrame{
 
     public void clearTF(){
         //saldo.setText(null);
-
         restante.setText(null);
         monto.setText(null);
     }
