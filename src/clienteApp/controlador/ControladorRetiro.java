@@ -44,7 +44,12 @@ public class ControladorRetiro implements IControlador{
             switch (e.getActionCommand()){
                 case "Limpiar" -> {
                     vista.clearTF();
-                    vista.setSaldo(nuevoSaldo);
+                    if(nuevoSaldo != null){
+                        vista.setSaldo(nuevoSaldo);
+                    }
+                    else{
+                        vista.setSaldo(vista.getSaldo());
+                    }
                 }
                 case "Aceptar" -> {
                     try{
