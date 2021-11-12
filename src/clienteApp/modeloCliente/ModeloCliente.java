@@ -27,8 +27,6 @@ public class ModeloCliente extends Thread {
             @Override
             protected Object doInBackground() throws Exception {
                 while (true) {
-                    System.out.println("while cliente " + Thread.currentThread().getName());
-
                     SwingUtilities.invokeLater(new Runnable() {
                         @Override
                         public void run() {
@@ -84,7 +82,6 @@ public class ModeloCliente extends Thread {
     }
 
     public void enviarMensaje(String mensaje){
-        //O
         try{
             bufferedWriter.write(mensaje);
             //Preparar el buffer para que quede limpio en el caso de ingresar
@@ -93,7 +90,30 @@ public class ModeloCliente extends Thread {
             bufferedWriter.flush();
         }
         catch (IOException ex){
-            Logger.getLogger(ModeloCliente.class.getName()).log(Level.SEVERE, null,ex);
+            salir();
+            controlador.agregarMensaje("Error: El servidor está desconectado");
+            System.exit(0);
         }
     }
+
+    public void salir(){
+
+        try {
+            //this.interrupt();
+
+            if(bufferedWriter != null)
+                bufferedWriter.close();
+
+            if(bufferedReader != null)
+                bufferedReader.close();
+
+            if(socket != null){
+                socket.close();
+            }
+
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+    }
+
 }

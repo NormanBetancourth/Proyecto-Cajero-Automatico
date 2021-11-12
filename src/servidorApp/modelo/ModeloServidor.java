@@ -36,7 +36,7 @@ public class ModeloServidor{
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                System.out.println("Close para cerrar el servidor");
+                System.out.println("Para cerrar el servidor ingrese 'close': ");
                 Scanner scanner = new Scanner(System.in);
                 String msg = scanner.nextLine();
                 if (msg.equals("close")){
