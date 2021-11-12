@@ -2,9 +2,11 @@ package servidorApp.modelo;
 
 import servidorApp.SQLConnection.SQLExecutor;
 
+import javax.swing.*;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -30,6 +32,25 @@ public class ModeloServidor{
         }
     }
 
+    public void close(){
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("Close para cerrar el servidor");
+                Scanner scanner = new Scanner(System.in);
+                String msg = scanner.nextLine();
+                if (msg.equals("close")){
+                    try {
+                        serverSocket.close();
+                        System.exit(0);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
+
     public void esperarAlCliente() {
         Socket socket = null;
         try {
@@ -43,7 +64,7 @@ public class ModeloServidor{
                 thread.start();
             }
         } catch (IOException ex) {
-            Logger.getLogger(ModeloServidor.class.getName()).log(Level.SEVERE, null, ex);
+            close();
         }
     }
 

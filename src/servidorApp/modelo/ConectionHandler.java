@@ -75,7 +75,8 @@ public class ConectionHandler extends  Thread{
             bufferedWriter.newLine();
             bufferedWriter.flush();
         } catch (IOException ex) {
-            Logger.getLogger(ModeloServidor.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(ModeloServidor.class.getName()).log(Level.SEVERE, null, ex);
+            salir();
         }
     }
 
@@ -87,7 +88,8 @@ public class ConectionHandler extends  Thread{
             bufferedWriter.newLine();
             bufferedWriter.flush();
         } catch (IOException ex) {
-            Logger.getLogger(ModeloServidor.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(ModeloServidor.class.getName()).log(Level.SEVERE, null, ex);
+            salir();
         }
     }
 
@@ -294,8 +296,9 @@ public class ConectionHandler extends  Thread{
                 }
             }
         } catch (Exception exception) {
-            exception.printStackTrace();
+            //exception.printStackTrace();
             //enviarMensajeDeError("Hubo un fallo en el proceso");
+            salir();
         }
     }
 }

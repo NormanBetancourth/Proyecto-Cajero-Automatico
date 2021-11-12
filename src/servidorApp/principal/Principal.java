@@ -7,6 +7,7 @@ public class Principal {
         try {
             System.out.println("Servidor");
             ModeloServidor modelo = new ModeloServidor();
+            modelo.close();
             modelo.esperarAlCliente();
         } catch (Exception e) {
             e.printStackTrace();
